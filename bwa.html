@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BWA Roster 2025</title>
+    <!-- Favicon for browser tab -->
+    <link rel="icon" type="image/png" href="bwaLogo.png">
+    <!-- Custom cursor -->
+    <style type="text/css">
+        * {
+            cursor: url(https://cur.cursors-4u.net/nature/nat-2/nat120.cur), auto !important;
+        }
+    </style>
+    <!-- Audio player that autoplays -->
+    <audio id="bgMusic" autoplay loop muted>
+        <source src="fire.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Homemade+Apple);
+        
+        body {
+            background-color: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ascii-container {
+            margin: 20px auto;
+            max-width: 400px; /* Limiting the container width */
+        }
+        
+        .ascii-art {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            width: 300px; /* Setting a fixed width for the image */
+        }
+        
+        .logo-container {
+            margin: 30px auto;
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .bwa-logo {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.3));
+        }
+        
+        .roster {
+            text-align: center;
+            line-height: 1.5;
+            margin: 40px auto;
+            max-width: 700px;
+            border: 1px solid #00ff00;
+            padding: 20px;
+            box-shadow: 0 0 10px #00ff00;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 24px;
+            text-shadow: 0 0 5px #00ff00;
+            margin-bottom: 20px;
+        }
+        
+        .tier-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            color: #00ff99;
+        }
+        
+        .roster-item {
+            margin: 5px 0;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        @keyframes glowing {
+            0% { text-shadow: 0 0 5px #00ff00; }
+            50% { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00; }
+            100% { text-shadow: 0 0 5px #00ff00; }
+        }
+        
+        h1 {
+            animation: glowing 2s infinite;
+        }
+        
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        
+        .audio-controls {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .control-btn {
+            background-color: #000;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .control-btn:hover {
+            background-color: #003300;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            height: 5px;
+            background: #003300;
+            outline: none;
+            border-radius: 5px;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #00ff00;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #00ff00;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .cursor-attribution {
+            margin-top: 10px;
+            font-size: 10px;
+            opacity: 0.5;
+        }
+        
+        .cursor-attribution a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+        
+        .cursor-attribution a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Cannabis Leaf Styles */
+        .leaf-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .mary {
+            position: absolute;
+            height: 80px;
+            width: 100px;
+            margin: auto;
+            opacity: 0.7;
+            transform: scale(0.4);
+        }
+        
+        .leaf {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            margin-left: -32px;
+            width: 50px;
+            height: 50px;
+            border-radius: 0 50% 0;
+            background-color: #558B2F;
+            background-size: 100% 100%, auto 10px; 
+            background-image: 
+                linear-gradient(to right top, #558B2F 50%, rgba(0,0,0,0) 50%),
+                linear-gradient(to left, #689F38 50%, rgba(0,0,0,0) 50%);
+            background-clip: padding-box;
+            border: 2px dotted #558B2F;
+            transform-origin: 50% 100%;
+        }
+        
+        .leaf.center {
+            transform:
+                rotate(90deg)
+                scaleY(0.3)
+                rotate(-45deg);
+            z-index: 5;
+        }
+        
+        .leaf.out {
+            bottom: 18px;
+            left: 50%;
+            margin-left: -38px;
+            width: 43px;
+            height: 43px;
+            transform: 
+                rotate(50deg)
+                scaleY(0.3)
+                rotate(-45deg);
+            z-index: 4;
+        }
+        
+        .leaf.out._2 {
+            margin-left: -7px;
+            transform:
+                rotatex(180deg)
+                rotate(230deg)
+                scaleY(0.3)
+                rotate(-45deg);
+        }
+        
+        .leaf.outer {
+            bottom: 7px;
+            left: 50%;
+            margin-left: -25px;
+            width: 27px;
+            height: 27px;
+            transform: 
+                rotate(10deg)
+                scaleY(0.3)
+                rotate(-45deg);
+            z-index: 3;
+        }
+        
+        .leaf.outer._2 {
+            margin-left: -2px;
+            transform: 
+                rotatex(180deg)
+                rotate(-170deg)
+                scaleY(0.3)
+                rotate(-45deg);
+        }
+        
+        .leaf.outest {
+            bottom: 5px;
+            left: 50%;
+            margin-left: -8px;
+            width: 10px;
+            height: 10px;
+            transform: 
+                rotate(-30deg)
+                scaleY(0.3)
+                rotate(-45deg);
+            z-index: 2;
+        }
+        
+        .leaf.outest._2 {
+            margin-left: -3px;
+            transform: 
+                rotatex(180deg)
+                rotate(-210deg)
+                scaleY(0.3)
+                rotate(-45deg);
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(360deg);
+            }
+        }
+        
+        @keyframes sway {
+            0% { margin-left: 0; }
+            25% { margin-left: 15px; }
+            50% { margin-left: -15px; }
+            75% { margin-left: 10px; }
+            100% { margin-left: 0; }
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <canvas class="matrix-rain" id="matrix"></canvas>
+    <div class="leaf-container" id="leafContainer"></div>
+    
+    <div class="container">
+
+        <div class="logo-container">
+            <img src="bwaweed.png" alt="BWA Cannabis Logo" class="bwa-logo">
+        </div>
+        
+        <h1 style="color: #00ff00; text-shadow: 0 0 10px #00ff00;">BoSSeS-WiT-ATTiTuDe</h1>
+
+        <div class="roster">
+            <h1>2025 BWA ROSTER</h1>
+            
+            <div class="tier-title">::: Founders (Top Tier) :::</div>
+            <div class="roster-item">- BWA Sa7an™</div>
+            <div class="roster-item">- BWA Lulu™</div>
+            <div class="roster-item">- BWA MoDA™</div>
+            <div class="roster-item">- BWA MARNI™</div>
+            
+            <div class="tier-title">::: Cabinet Tier, Defense Protocol Advisory :::</div>
+            <div class="roster-item">~ BWA Delton     (DeL)</div>
+            <div class="roster-item">~ BWA Conquest (CoN)</div>
+            <div class="roster-item">~ BWA X    (X)</div>
+            
+            <div class="tier-title">::: Community Management (BT) :::</div>
+            <div class="roster-item">~ BWA Emily (EM)</div>
+            <div class="roster-item">~ BWA MeTHAngeL (MeTH)</div>
+            <div class="roster-item">~ BWA Darryl (DaR)</div>
+            <div class="roster-item">~ BWA LiZzarD (RyRy)</div>
+            <div class="roster-item">~ BWA Coco    (CO)</div>
+            <div class="roster-item">~ BWA Oni (Oni)</div>
+            <div class="roster-item">~ BWA Butterfly (BuTT)</div>
+            
+            <div class="tier-title">::: General Population (Souljaz) (GP) :::</div>
+            <div class="roster-item">~ BWA Deviance</div>
+            <div class="roster-item">~ BWA BLACKTWINKHOLE</div>
+            <div class="roster-item">~ BWA Fined</div>
+            <div class="roster-item">~ BWA Mana</div>
+            <div class="roster-item">~ BWA MeTHAngeL</div>
+            <div class="roster-item">~ BWA D0XKITTY</div>
+            <div class="roster-item">~ BWA Vampire</div>
+            <div class="roster-item">~ BWA SharkTeetH</div>
+            <div class="roster-item">~ BWA Lizzard</div>
+            <div class="roster-item">~ BWA Frank</div>
+            <div class="roster-item">~ BWA NT</div>
+            <div class="roster-item">~ BWA Chris</div>
+            <div class="roster-item">~ BWA Bustin</div>
+            <div class="roster-item">~ BWA Lonesome</div>
+            <div class="roster-item">~ BWA Fined</div>
+            <div class="roster-item">~ BWA Faught</div>
+            <div class="roster-item">~ BWA Weep</div>
+            <div class="roster-item">~ BWA UPS</div>
+            <div class="roster-item">~ BWA darryl</div>
+            <div class="roster-item">~ BWA 73i</div>
+            <div class="roster-item">~ BWA CLR</div>
+            <div class="roster-item">~ BWA L</div>
+            <div class="roster-item">~ BWA Domo</div>
+            <div class="roster-item">~ BWA Kitty</div>
+            <div class="roster-item">~ BWA Cydist</div>
+            <div class="roster-item">~ BWA Fear</div>
+            <div class="roster-item">~ BWA Hopeless</div>
+            <div class="roster-item">~ BWA Stealth</div>
+            <div class="roster-item">~ BWA Butterfly™</div>
+            <div class="roster-item">~ BWA Pro</div>
+            <div class="roster-item">~ BWA $urge</div>
+            <div class="roster-item">~ BWA Jeffwy</div>
+            <div class="roster-item">~ BWA rbx</div>
+            <div class="roster-item">~ BWA IP Address</div>
+        </div>
+        
+         <div class="ascii-container">
+            <img src="BWA.gif" alt="BWA ASCII Art" class="ascii-art">
+        </div>
+
+        <div class="footer">
+            &copy; 2025 BWA | BoSSeS-WiT-ATTiTuDe
+            <div class="cursor-attribution">
+                <a href="https://www.cursors-4u.com/cursor/2006/02/19/nat120.html" target="_blank" title="Weed - Marijuana">
+                    Weed Cursor from Cursors-4U.com
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz$@%&?!#';
+        const charArray = chars.split('');
+        
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+        
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff00';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+        
+        setInterval(draw, 33);
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Falling leaves effect
+        const leafContainer = document.getElementById('leafContainer');
+        const leafCount = 15; // Number of cannabis leaf groups
+        
+        function createCannabisLeaf() {
+            // Create the main container for the cannabis leaf
+            const maryContainer = document.createElement('div');
+            maryContainer.className = 'mary';
+            
+            // Create the center leaf
+            const centerLeaf = document.createElement('div');
+            centerLeaf.className = 'leaf center';
+            maryContainer.appendChild(centerLeaf);
+            
+            // Create out leaves
+            const outLeaf1 = document.createElement('div');
+            outLeaf1.className = 'leaf out _1';
+            maryContainer.appendChild(outLeaf1);
+            
+            const outLeaf2 = document.createElement('div');
+            outLeaf2.className = 'leaf out _2';
+            maryContainer.appendChild(outLeaf2);
+            
+            // Create outer leaves
+            const outerLeaf1 = document.createElement('div');
+            outerLeaf1.className = 'leaf outer _1';
+            maryContainer.appendChild(outerLeaf1);
+            
+            const outerLeaf2 = document.createElement('div');
+            outerLeaf2.className = 'leaf outer _2';
+            maryContainer.appendChild(outerLeaf2);
+            
+            // Create outest leaves
+            const outestLeaf1 = document.createElement('div');
+            outestLeaf1.className = 'leaf outest _1';
+            maryContainer.appendChild(outestLeaf1);
+            
+            const outestLeaf2 = document.createElement('div');
+            outestLeaf2.className = 'leaf outest _2';
+            maryContainer.appendChild(outestLeaf2);
+            
+            // Random horizontal position
+            const leftPos = Math.random() * 100;
+            maryContainer.style.left = `${leftPos}%`;
+            
+            // Random animation duration between 12 and 20 seconds
+            const fallDuration = 12 + Math.random() * 8;
+            maryContainer.style.animation = `fall ${fallDuration}s linear forwards, sway ${fallDuration/3}s ease-in-out infinite`;
+            
+            // Random rotation (entire leaf cluster)
+            const rotation = Math.random() * 360;
+            maryContainer.style.transform = `scale(0.4) rotate(${rotation}deg)`;
+            
+            // Random delay before starting animation
+            maryContainer.style.animationDelay = `${Math.random() * 15}s`;
+            
+            // Random opacity adjustment
+            maryContainer.style.opacity = 0.5 + Math.random() * 0.3;
+            
+            return maryContainer;
+        }
+        
+        // Initially create leaves
+        for (let i = 0; i < leafCount; i++) {
+            const leaf = createCannabisLeaf();
+            leafContainer.appendChild(leaf);
+        }
+        
+        // Periodically add new leaves
+        setInterval(() => {
+            // Remove a leaf cluster and add a new one to keep the count steady
+            if (leafContainer.children.length > leafCount * 1.2) {
+                leafContainer.removeChild(leafContainer.firstChild);
+            }
+            
+            const leaf = createCannabisLeaf();
+            leafContainer.appendChild(leaf);
+        }, 4000);
+        
+        // Audio controls
+        const audio = document.getElementById('bgMusic');
+        const toggleBtn = document.getElementById('toggleAudio');
+        const volumeSlider = document.getElementById('volumeSlider');
+        
+        // Function to start audio playback
+        function playAudio() {
+            // Unmute and play the audio
+            audio.muted = false;
+            audio.play()
+                .then(() => {
+                    console.log('Audio playback started successfully');
+                    toggleBtn.textContent = 'Pause Music';
+                })
+                .catch(error => {
+                    console.error('Audio playback failed:', error);
+                    // Try to play muted and then unmute after user interaction
+                    audio.muted = true;
+                    audio.play();
+                });
+        }
+        
+        // Try to play audio as soon as possible
+        window.addEventListener('load', playAudio);
+        
+        // Try to play on first user interaction with the page (any click will trigger it)
+        document.addEventListener('click', function() {
+            audio.muted = false;
+            audio.play();
+        });
+        
+        // Set initial volume
+        audio.volume = 0.5;
+        
+        toggleBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                toggleBtn.textContent = 'Pause Music';
+            } else {
+                audio.pause();
+                toggleBtn.textContent = 'Play Music';
+            }
+        });
+        
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value;
+        });
+    </script>
+</body>
+</html>
